@@ -102,6 +102,7 @@
   border-top-right-radius: 8px;
   padding: 10px 10px 10px 10px;
   transition: bottom 0.4s ease-out;
+  justify-content: space-between;
 }
 .arrow_down_box {
   width: 100%;
@@ -342,6 +343,7 @@ input[type=range]::-ms-track {
   align-items: center;
   left: -100%;
   transition: left 0.4s ease-out;
+justify-content: space-between;
 }
 .main_menu_info {
   display: flex;
