@@ -9,6 +9,7 @@ const close_side_menu = document.querySelector('.close_side_menu')
 const repeat_icon = document.querySelector('.repeat')
 const shuffle_icon = document.querySelector('.shuffle')
 const inputTag = document.querySelector('.inputTag')
+const searchInput = document.querySelector('.searchInput')
 const covers = ['images/p1.jpg', 'images/p2.jpg', 'images/p3.jpg', 'images/p4.jpg', 'images/p5.jpg', 'images/p6.jpg', 'images/p7.jpg', 'images/p8.jpg', 'images/p9.jpg', 'images/p10.jpg', 'images/p11.jpg', 'images/p12.jpg']
 
 //default state
@@ -51,12 +52,7 @@ let play_state = false;
      }
    })
 });
-close_side_menu.addEventListener('click', () => {
-  if (menu_default_s) {
-   side_menu.style.left = '-100%'
-   menu_default_s = false;
-  }
-})
+
 repeat_icon.addEventListener('click', () => {
   if (!rep_state) {
      repeat_icon.src = 'Icons/icon-repeat-one.png';
@@ -98,6 +94,7 @@ function getAllFiles(files, data) {
     }
   }
 }
+let copy_data;
 function creatingObject(file, thisAudio, data, loop_state, loop_current) {
   const randCover = covers[Math.floor(Math.random()*covers.length)]
   console.log(data);
@@ -112,53 +109,110 @@ function creatingObject(file, thisAudio, data, loop_state, loop_current) {
   }
   list_audios.push(audioInfo)
 
-  console.log(list_audios);
   data = list_audios;
-  console.log(data);
+  copy_data = data;
   loop_state ? displaying_audio_box(data):null;
 }
 const songs_list_box = document.querySelector('.songs_list_box')
 function displaying_audio_box(data) {
+  creating_audio_boxes(data)
+  activate_searchInput(copy_data, songs_list_box)
+}
+function creating_audio_boxes(data) {
   const audio_html_box = data.map((item) => {
     return `
-    <div class="song_space ${item.id}">
+    <div class="song_space">
        <div class="song_INLIST_cover">
          <img src=${item.cover_image} alt=${item.name + " cover photo"} class="song_INLIST_image">
        </div>
-       <div class="song_INLIST_details">
+       <div class="song_INLIST_details ${item.id}">
          <h3 class="song_INLIST_title">${item.name}</h3>
          <h5 class="song_INLIST_artist">${item.artist}</h5>
        </div>
        <div class="song_INLIST_actions">
          <div class="song_INLIST_like">
-           <img src="Icons/icon-filled-heart.png" alt="" class="icon song_INLIST_like_icon">
+           <img src="Icons/icon-filled-heart.png" alt="" class="icon song_INLIST_like_icon ${item.id}">
          </div>
          <div class="song_INLIST_options">
-           <img src="Icons/icon-dot-bricks.png" alt="" class="icon song_INLIST_bricks_icon">
+           <img src="Icons/icon-dot-bricks.png" alt="" class="icon song_INLIST_bricks_icon ${item.id}">
          </div>
        </div>
     </div>
       `
   }).join('')
   songs_list_box.innerHTML = audio_html_box;
+
+  const song_INLIST_bricks_icon = document.querySelectorAll('.song_INLIST_bricks_icon')
+  triggering_options(song_INLIST_bricks_icon, data)
   actions_on_spaces(data)
 }
+let reserved_song;
 const active_artist_label = document.querySelector('.active_artist_label')
 const active_title_label = document.querySelector('.active_title_label')
 const active_song_cover = document.querySelector('.active_song_cover')
 const active_banner = document.querySelector('.active_banner')
+const menu_image = document.querySelector('.menu_image')
+const menu_title = document.querySelector('.menu_title')
+const menu_artist = document.querySelector('.menu_artist')
+let audio;
 function actions_on_spaces(data) {
-  const song_spaces = document.querySelectorAll('.song_space')
-  song_spaces.forEach((item, i) => {
+  const song_INLIST_details = document.querySelectorAll('.song_INLIST_details')
+
+  song_INLIST_details.forEach((item, i) => {
      item.addEventListener('click', () => {
-       const active_box = data.filter((ele) => {
+
+       reserved_song = data.filter((ele) => {
          return ele.id === item.classList[1]
        })
-       active_artist_label.textContent = active_box[0].artist
-       active_title_label.textContent = active_box[0].name
-       active_song_cover.src = active_box[0].cover_image
-       active_banner.src = active_box[0].cover_image
+       active_artist_label.textContent = reserved_song[0].artist
+       active_title_label.textContent = reserved_song[0].name
+       active_song_cover.src = reserved_song[0].cover_image
+       active_banner.src = reserved_song[0].cover_image
+
+       const source = reserved_song[0].src
+       console.log(source);
+       let aa = new Audio(source)
+       playing_audio(source)
      })
   });
+}
 
+function triggering_options(option_btn, data) {
+  option_btn.forEach((item, i) => {
+    item.addEventListener('click', () => {
+let option_song = data.filter((ele) => {
+        return ele.id === item.classList[2]
+      })
+      side_menu.style.left = '0%'
+      menu_image.src = option_song[0].cover_image
+      menu_title.textContent = option_song[0].name
+      menu_artist.textContent = option_song[0].artist
+      menu_default_s = true;
+    })
+  });
+
+  close_side_menu.addEventListener('click', () => {
+     side_menu.style.left = '-100%'
+     menu_default_s = false;
+  })
+}
+//making controls work...
+
+
+
+
+//Playing audio...
+function playing_audio(source) {
+  audio !== undefined ? audio.pause():null;
+  audio = new Audio(source)
+  audio.play()
+}
+
+function activate_searchInput(data, songs_list_box) {
+  searchInput.addEventListener('input', (e) => {
+    const search_val = data.filter((item) => {
+      return item.name.toLowerCase().includes(e.target.value.toLowerCase()) || item.artist.toLowerCase().includes(e.target.value.toLowerCase())
+    })
+      creating_audio_boxes(search_val)
+  })
 }
