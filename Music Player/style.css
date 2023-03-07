@@ -1,0 +1,502 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Trebuchet MS, Roboto Mono, sans-serif;
+}
+:root {
+  --full-height: 90vh;
+  --pr-height: -78vh;
+  --clr-yellow-green: #e8f79a;
+  --clr-s-green: #49d292;
+  --clr-d-blue: #3b445b;
+  --clr-black: #383746;
+  --clr-grey: #bcbfaa;
+  --clr-l-grey: #e1e1e1;
+}
+.icon {
+  cursor: pointer;
+}
+.main {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at -5.9% -5.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 19.9%, rgb(255, 163, 77) 18.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
+  padding: 0 .5rem;
+}
+.navigation {
+  width: 100%;
+  height: 4rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-right: 10px;
+}
+.icon {
+  width: 20px;
+}
+.sortLabel {
+  color: #e8f79a;
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+.filterBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #3b445b;
+  padding: 4px ;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#inputTag{
+  display: none;
+}
+.inputLabel {
+  cursor:pointer;
+}
+.searchInput {
+  background: transparent;
+  outline: 0;
+  border: 2px solid #3b445b;
+  border-radius: 4px;
+  position: relative;
+  height: 1.7rem;
+  padding-left:1.5rem;
+  color: white;
+  letter-spacing: 0.5px;
+}
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+}
+.searchIcon {
+  cursor: pointer;
+  position:absolute;
+  left: .2rem;
+  z-index: 100;
+}
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  height: var(--full-height);
+  background-color: #3b445b;
+  position: absolute;
+  bottom: var(--pr-height);
+  left: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px 10px 10px 10px;
+  transition: bottom 0.4s ease-out;
+}
+.arrow_down_box {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: px;
+  display: none;
+}
+.arrow_down {
+  width: 50px;
+  height: 35px;
+}
+.active_song_cover_box {
+  min-width: 2.3rem;
+  min-height: 2.3rem;
+  max-width: 2.9rem;
+  max-height: 2.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+.previewSong {
+  width: 100%;
+  height: var(--pre-height);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease-out;
+}
+.active_like_pause_box {
+  display: flex;
+  gap: 3px;
+}
+.active_like_icon, .active_pause_icon {
+  width: 23px;
+}
+.active_title_artist_box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+}
+.active_song_cover_box {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--clr-d-blue)
+}
+.active_song_cover {
+  width: 100%;
+  width: 100%;
+}
+.active_title_label {
+  color: var(--clr-l-grey);
+  font-weight: 600;
+  font-size: 15px;
+  min-width: 12rem;
+  max-width: 60vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.active_artist_label {
+  color: var(--clr-grey);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.active_banner_box {
+  width: 60%;
+  height: 40%;
+  background-color: var(--clr-grey);
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: 100%;
+  border-radius: 30px;
+  border: 1px solid var(--cle-d-blue);
+}
+.active_banner {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.active_controls_box {
+  width: 100%;
+  height: 30%;
+  background-color: var(--clr-bla ck);
+  position: relative;
+  bottom: 0;
+  margin-top: 20px;
+}
+.share_and_options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+.active_options_icon, .active_share_icon, .share_and_options .active_like_icon {
+  width: 23px;
+}
+.playback_bar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  padding: 0 20px;
+  margin-bottom: 5px;
+}
+
+.active_range {
+  width: 100%;
+}
+.time_duration_box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: var(--clr-l-grey);
+  font-size: 13px;
+}
+.control_panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+.shuffle, .repeat {
+  width: 28px;
+}
+.main_controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.arrowLeft, .arrowRight {
+  width: 30px;
+}
+.pausePlay {
+  width: 3rem;
+}
+/*STYLING INPUT RANGE*/
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid var(--clr-s-green);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  border: 1px solid var(--clr-s-green);
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4.4px;
+  cursor: pointer;
+  background: var(--clr-black);
+  border-radius: 500px;
+  box-shadow: 0 0 0 .1px #fff;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--clr-s-green);
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 4.4px;
+  cursor: pointer;
+  background: var(--clr-black);
+  border-radius: 500px;
+  box-shadow: 0 0 0 .1px #fff;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+
+
+.side_menu {
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-d-blue);
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  left: -100%;
+  transition: left 0.4s ease-out;
+}
+.main_menu_info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 45%;
+  align-items: center;
+  gap: 10px;
+}
+.menu_banner {
+  width: 50%;
+  height: 50%;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+.menu_title_artist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.menu_title {
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  max-width: 200px;
+  text-align: center;
+}
+.menu_artist {
+  color: var(--clr-s-green);
+  font-weight: 500;
+  text-align: center;
+}
+.menu_more_options {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px;
+  cursor: pointer;
+
+}
+.menu_icons {
+  width: 25px;
+  height: auto;
+}
+.menu_option_like {
+  display: flex;
+  gap: 15px;
+  padding: 8px;
+}
+.menu_option_like:hover, .menu_option_like:active {
+  background-color: var(--clr-black);
+  border-radius: 5px;
+}
+.menu_labels {
+  font-size: 23px;
+  color: lightgrey;
+}
+.close_side_menu {
+  cursor: pointer;
+  position: absolute;
+  font-size: 25px;
+  color: var(--clr-yellow-green);
+  color: white;
+  top: .5rem;
+  left: .5rem;
+  background-color: var(--clr-black);
+  padding: 4px 11px;
+  border-radius: 50%;
+}
+
+.songs_list_box {
+  width: 95vw;
+  height: auto;
+  height: 400px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 5px 0;
+  gap: 10px;
+}
+.song_space {
+  width: 95vw;
+  height: 60px;
+  background-color: var(--clr-black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.song_INLIST_cover {
+  min-width: 45px;
+  min-height: 45px;
+  max-width: 50px;
+  max-height: 50px;
+  border: 2px solid var(--clr-black);
+  border-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.song_INLIST_image {
+  width: 100%;
+  height: 100%;
+  filter: blur(0.4px) brightness(0.9);
+}
+.song_INLIST_details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.song_INLIST_title {
+  color: var(--clr-grey);
+  font-size: 15px;
+  font-weight: 600;
+  min-width: 40vw;
+  max-width: 60vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.song_INLIST_artist {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--clr-l-grey)
+}
+.song_INLIST_actions {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  min-width: 20vw;
+  position: relative;
+}
+.song_INLIST_like_icon, .song_INLIST_bricks_icon {
+  min-width: 5vw;
+  max-width: 15vw;
+}
+@media screen and (max-width: 340px) {
+  .song_INLIST_actions {
+    position: absolute;
+    right: -10px;
+    top: 30%;
+  }
+  .song_space {
+    position: relative;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 0;
+    padding-right: 60px;
+  }
+}

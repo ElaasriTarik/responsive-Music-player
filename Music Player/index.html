@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" charset="utf-8" defer></script>
+  </head>
+  <body>
+     <main class="main">
+       <div class="navigation">
+          <div class="searchBox">
+          <img src="Icons/icon-search.png" alt="search icon" class="icon searchIcon">
+          <input type="text" class="searchInput">
+          </div>
+          <div class="filterBox">
+            <label for="inputTag" class="inputLabel">
+                Select
+                <input id="inputTag" type="file" accept="audio/*" class="inputTag" multiple/>
+              </label>
+          </div>
+       </div>
+
+   <section class="songs_list_box">
+        <div class="song_space">
+           <div class="song_INLIST_cover">
+             <img src="" alt="" class="song_INLIST_image">
+           </div>
+           <div class="song_INLIST_details">
+             <h3 class="song_INLIST_title">Something just like this</h3>
+             <h5 class="song_INLIST_artist">The chainsmokers</h5>
+           </div>
+           <div class="song_INLIST_actions">
+             <div class="song_INLIST_like">
+               <img src="Icons/icon-filled-heart.png" alt="" class="icon song_INLIST_like_icon">
+             </div>
+             <div class="song_INLIST_options">
+               <img src="Icons/icon-dot-bricks.png" alt="" class="icon song_INLIST_bricks_icon">
+             </div>
+           </div>
+        </div>
+   </section>
+
+     <section class="side_menu">
+       <span class="close_side_menu">X</span>
+       <div class="main_menu_info">
+          <div class="menu_banner">
+           <img src="" alt="" class="menu_image">
+          </div>
+          <div class="menu_title_artist">
+             <h3 class="menu_title">Something just like this</h3>
+             <h5 class="menu_artist">The chainsmokers</h5>
+          </div>
+       </div>
+       <div class="menu_more_options">
+           <div class="menu_option_like">
+              <img src="/Icons/icon-filled-heart.png" alt="" class="icon menu_like menu_icons">
+              <h3 class="menu_liked_label menu_labels">Liked</h3>
+           </div>
+
+           <div class="menu_option_like">
+              <img src="/Icons/icon-add-to-playlist.png" alt="" class="icon menu_add_to_playlist menu_icons">
+              <h3 class="menu_add_to_playlist_label menu_labels">Add to playlist</h3>
+           </div>
+
+           <div class="menu_option_like">
+              <img src="/Icons/icon-add-to-queue.png" alt="" class="icon menu_add_to_queue menu_icons">
+              <h3 class="menu_add_to_queue_label menu_labels">Add to Queue</h3>
+           </div>
+
+           <div class="menu_option_like">
+              <img src="/Icons/icon-details.png" alt="" class="icon menu_details menu_icons">
+              <h3 class="menu_details_label menu_labels">More info</h3>
+           </div>
+       </div>
+     </section>
+
+       <div class="footer">
+           <div class="arrow_down_box">
+             <img src="Icons/icon-arrow-down.png" alt="" class="icon arrow_down">
+           </div>
+           <div class="previewSong">
+              <div class="active_song_cover_box">
+                <img src="" alt="" class="active_song_cover">
+              </div>
+              <div class="active_title_artist_box">
+                 <h3 class="active_title_label">Something just like this</h3>
+                 <h6 class="active_artist_label">The chainsmokers</h6>
+              </div>
+              <div class="active_like_pause_box">
+               <div class="active_like_icon_box">
+                 <img src="Icons/icon-filled-heart.png" alt="" class="icon active_like_icon">
+               </div>
+               <div class="active_pause_icon_box">
+                  <img src="Icons/icon-play.png" alt="" class="icon active_pause_icon">
+               </div>
+              </div>
+           </div>
+           <div class="active_banner_box">
+             <img src="" alt="" class="active_banner">
+           </div>
+           <div class="active_controls_box">
+              <div class="share_and_options">
+              <div class="like_icon">
+                   <img src="Icons/icon-filled-heart.png" alt="" class="icon active_like_icon">
+              </div>
+              <div class="share_icon">
+                <img src="Icons/icon-share.png" alt="" class="icon active_share_icon">
+              </div>
+              <div class="options-icon">
+                <img src="Icons/icon-dot-bricks.png" alt="" class="icon active_options_icon">
+              </div>
+            </div>
+            <div class="playback_bar">
+           <input type="range" name="" value="0" class="active_range">
+           <div class="time_duration_box">
+             <p class="currentTime">00:00</p>
+             <p class="duration">00:00</p>
+           </div>
+            </div>
+            <div class="control_panel">
+              <div class="shuffle_box">
+                 <img src="Icons/icon-shuffle.png" alt="" class="icon shuffle">
+              </div>
+                 <div class="main_controls">
+                    <div class="prev_box">
+                       <img src="Icons/icon-left-arrow.png" alt="" class="icon arrowLeft">
+                    </div>
+                    <div class="pausePlay_box">
+                       <img src="Icons/icon-play-circle.png" alt="" class="icon pausePlay">
+                    </div>
+                    <div class="next_box">
+                       <img src="Icons/icon-right-arrow.png" alt="" class="icon arrowRight">
+                    </div>
+                 </div>
+              <div class="repeat_box">
+                 <img src="Icons/icon-repeat.png" alt="" class="icon repeat">
+              </div>
+            </div>
+           </div>
+       </div>
+     </main>
+  </body>
+</html>
